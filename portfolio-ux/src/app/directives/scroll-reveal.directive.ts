@@ -25,3 +25,4 @@ export class ScrollRevealDirective implements OnInit {
     observer.observe(this.el.nativeElement);
   }
 }
+

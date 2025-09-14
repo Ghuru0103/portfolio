@@ -91,3 +91,4 @@ export class StoryModalComponent {
     return `timeline-event--${type}`;
   }
 }
+
