@@ -1,0 +1,20 @@
+<section class="services scroll-reveal" id="services" appScrollReveal>
+  <div class="container">
+    <div class="services-grid">
+      <div class="service-card hover-lift animate-scale-in" 
+           *ngFor="let service of services; let i = index" 
+           [class.active]="service.active"
+           [class.animate-stagger-1]="i === 0"
+           [class.animate-stagger-2]="i === 1"
+           [class.animate-stagger-3]="i === 2"
+           (click)="selectService(service)">
+        <div class="service-icon animate-bounce-in">{{ service.icon }}</div>
+        <h3 class="service-title">{{ service.title }}.</h3>
+        <p class="service-projects">{{ service.projects }} Projects</p>
+        <div class="service-skills" *ngIf="service.active">
+          <span class="skill-tag" *ngFor="let skill of getServiceSkills(service.title)">{{ skill }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
