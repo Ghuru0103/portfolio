@@ -26,3 +26,5 @@ export class ScrollRevealDirective implements OnInit {
   }
 }
 
+
+

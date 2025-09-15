@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PortfolioService, Profile } from '../../services/portfolio.service';
+import { PortfolioService, Profile, ContactForm, ContactResponse } from '../../services/portfolio.service';
 
 @Component({
   selector: 'app-contact',
@@ -20,7 +20,10 @@ export class ContactComponent implements OnInit {
   isSubmitting = false;
   submitMessage = '';
 
-  constructor(private portfolioService: PortfolioService) {}
+  constructor(
+    private portfolioService: PortfolioService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit() {
     this.portfolioService.getProfile().subscribe(data => {
@@ -35,16 +38,32 @@ export class ContactComponent implements OnInit {
     }
 
     this.isSubmitting = true;
+    this.submitMessage = '';
     
-    // Simulate form submission
-    setTimeout(() => {
-      this.isSubmitting = false;
-      this.submitMessage = 'Thank you! Your message has been sent successfully.';
-      this.contactForm = { name: '', email: '', message: '' };
-    }, 2000);
+    // Send the form data to the backend
+    this.portfolioService.sendContactForm(this.contactForm).subscribe({
+      next: (response: ContactResponse) => {
+        this.isSubmitting = false;
+        if (response.success) {
+          this.submitMessage = response.message;
+          this.contactForm = { name: '', email: '', message: '' };
+        } else {
+          this.submitMessage = response.message;
+        }
+      },
+      error: (error) => {
+        this.isSubmitting = false;
+        console.error('Error sending message:', error);
+        this.submitMessage = 'Failed to send message. Please try again or contact me directly at guru.s.prashad@gmail.com';
+      }
+    });
   }
 
   scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (isPlatformBrowser(this.platformId)) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 }
+
+

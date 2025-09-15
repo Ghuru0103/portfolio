@@ -6,8 +6,171 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="assets/logo.png">
+  
+  <!-- Privacy and Security Headers -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+  
+  <!-- Prevent Screenshots and Screen Recording -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#282C34">
+  
+  <!-- Disable Right Click and Developer Tools -->
+  <style>
+    /* Prevent text selection and drag */
+    * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-touch-callout: none;
+    }
+    
+    /* Allow text selection for specific elements */
+    input, textarea, [contenteditable] {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+    
+    /* Prevent image dragging */
+    img {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+      pointer-events: none;
+    }
+    
+    /* Disable context menu */
+    body {
+      -webkit-context-menu: none;
+      -moz-context-menu: none;
+      -ms-context-menu: none;
+      context-menu: none;
+    }
+  </style>
 </head>
 <body>
   <app-root></app-root>
+  
+  <!-- Privacy Protection Scripts -->
+  <script>
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+    
+    // Disable F12, Ctrl+Shift+I, Ctrl+U, etc.
+    document.addEventListener('keydown', function(e) {
+      // Disable F12
+      if (e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+Shift+I (DevTools)
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+U (View Source)
+      if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+S (Save Page)
+      if (e.ctrlKey && e.keyCode === 83) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+A (Select All)
+      if (e.ctrlKey && e.keyCode === 65) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+P (Print)
+      if (e.ctrlKey && e.keyCode === 80) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+Shift+C (Element Inspector)
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+        e.preventDefault();
+        return false;
+      }
+    });
+    
+    // Disable drag and drop
+    document.addEventListener('dragover', function(e) {
+      e.preventDefault();
+    });
+    
+    document.addEventListener('drop', function(e) {
+      e.preventDefault();
+    });
+    
+    // Disable text selection
+    document.addEventListener('selectstart', function(e) {
+      e.preventDefault();
+    });
+    
+    // Disable image saving
+    document.addEventListener('dragstart', function(e) {
+      e.preventDefault();
+    });
+    
+    // Clear clipboard on copy attempts
+    document.addEventListener('copy', function(e) {
+      e.clipboardData.setData('text/plain', '');
+      e.preventDefault();
+    });
+    
+    // Disable print screen (limited effectiveness)
+    document.addEventListener('keyup', function(e) {
+      if (e.keyCode === 44) { // Print Screen key
+        alert('Screenshots are not allowed on this site.');
+      }
+    });
+    
+    // Blur content when tab loses focus (additional protection)
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        document.body.style.filter = 'blur(10px)';
+      } else {
+        document.body.style.filter = 'none';
+      }
+    });
+    
+    // Disable console methods
+    console.log = function() {};
+    console.warn = function() {};
+    console.error = function() {};
+    console.info = function() {};
+    
+    // Disable debugger
+    setInterval(function() {
+      if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+        // DevTools might be open
+        document.body.style.display = 'none';
+        setTimeout(function() {
+          document.body.style.display = 'block';
+        }, 100);
+      }
+    }, 500);
+  </script>
 </body>
 </html>

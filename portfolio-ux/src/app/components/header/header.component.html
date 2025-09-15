@@ -1,19 +1,37 @@
 <header class="header animate-slide-in-down">
   <div class="container">
     <div class="logo animate-bounce-in">
-      <span class="logo-text hover-scale">G</span>
+      <span class="logo-text hover-scale" (click)="scrollToTop()">G</span>
     </div>
     
     <nav class="nav" [class.nav-open]="isMenuOpen">
       <ul class="nav-list">
         <li class="nav-item animate-fade-in-up animate-stagger-1">
-          <a (click)="scrollToSection('services')" class="nav-link hover-glow">Services</a>
+          <a (click)="scrollToSection('services')" 
+             class="nav-link hover-glow" 
+             [class.active]="isActive('services')"
+             role="button"
+             tabindex="0"
+             (keydown.enter)="scrollToSection('services')"
+             (keydown.space)="scrollToSection('services')">Services</a>
         </li>
         <li class="nav-item animate-fade-in-up animate-stagger-2">
-          <a (click)="scrollToSection('works')" class="nav-link hover-glow">Projects</a>
+          <a (click)="scrollToSection('works')" 
+             class="nav-link hover-glow" 
+             [class.active]="isActive('works')"
+             role="button"
+             tabindex="0"
+             (keydown.enter)="scrollToSection('works')"
+             (keydown.space)="scrollToSection('works')">Projects</a>
         </li>
         <li class="nav-item animate-fade-in-up animate-stagger-3">
-          <a (click)="scrollToSection('contact')" class="nav-link hover-glow">Contact</a>
+          <a (click)="scrollToSection('contact')" 
+             class="nav-link hover-glow" 
+             [class.active]="isActive('contact')"
+             role="button"
+             tabindex="0"
+             (keydown.enter)="scrollToSection('contact')"
+             (keydown.space)="scrollToSection('contact')">Contact</a>
         </li>
       </ul>
     </nav>

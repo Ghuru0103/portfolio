@@ -67,7 +67,8 @@
               name="name" 
               [(ngModel)]="contactForm.name" 
               required
-              placeholder="Your name">
+              placeholder="Your name"
+              class="selectable">
           </div>
           
           <div class="form-group">
@@ -78,7 +79,8 @@
               name="email" 
               [(ngModel)]="contactForm.email" 
               required
-              placeholder="your.email@example.com">
+              placeholder="your.email@example.com"
+              class="selectable">
           </div>
           
           <div class="form-group">
@@ -86,7 +88,8 @@
             <textarea 
               id="message" 
               name="message" 
-              [(ngModel)]="contactForm.message" 
+              [(ngModel)]="contactForm.message"
+              class="selectable" 
               required
               rows="5"
               placeholder="Tell me about your project..."></textarea>

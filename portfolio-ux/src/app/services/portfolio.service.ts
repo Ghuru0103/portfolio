@@ -35,6 +35,17 @@ export interface Experience {
   technologies: string[];
 }
 
+export interface ContactForm {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export interface ContactResponse {
+  success: boolean;
+  message: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -54,5 +65,11 @@ export class PortfolioService {
   getExperience(): Observable<Experience[]> {
     return this.http.get<Experience[]>(`${this.apiUrl}/experience`);
   }
+
+  sendContactForm(contactData: ContactForm): Observable<ContactResponse> {
+    return this.http.post<ContactResponse>(`${this.apiUrl}/contact`, contactData);
+  }
 }
+
+
 
