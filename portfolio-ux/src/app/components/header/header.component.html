@@ -16,6 +16,24 @@
              (keydown.space)="scrollToSection('services')">Services</a>
         </li>
         <li class="nav-item animate-fade-in-up animate-stagger-2">
+          <a (click)="scrollToSection('skills')" 
+             class="nav-link hover-glow" 
+             [class.active]="isActive('skills')"
+             role="button"
+             tabindex="0"
+             (keydown.enter)="scrollToSection('skills')"
+             (keydown.space)="scrollToSection('skills')">Skills</a>
+        </li>
+        <li class="nav-item animate-fade-in-up animate-stagger-3">
+          <a (click)="scrollToSection('ai-tools')" 
+             class="nav-link hover-glow" 
+             [class.active]="isActive('ai-tools')"
+             role="button"
+             tabindex="0"
+             (keydown.enter)="scrollToSection('ai-tools')"
+             (keydown.space)="scrollToSection('ai-tools')">AI Tools</a>
+        </li>
+        <li class="nav-item animate-fade-in-up animate-stagger-4">
           <a (click)="scrollToSection('works')" 
              class="nav-link hover-glow" 
              [class.active]="isActive('works')"
@@ -24,7 +42,7 @@
              (keydown.enter)="scrollToSection('works')"
              (keydown.space)="scrollToSection('works')">Projects</a>
         </li>
-        <li class="nav-item animate-fade-in-up animate-stagger-3">
+        <li class="nav-item animate-fade-in-up animate-stagger-5">
           <a (click)="scrollToSection('contact')" 
              class="nav-link hover-glow" 
              [class.active]="isActive('contact')"

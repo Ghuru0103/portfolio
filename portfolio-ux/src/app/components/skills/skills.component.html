@@ -1,0 +1,36 @@
+<section class="skills scroll-reveal" id="skills" appScrollReveal>
+  <div class="container">
+    <div class="skills-header">
+      <h2 class="section-title">What can I do?</h2>
+    </div>
+    
+    <div class="skills-container">
+      <div class="skills-grid">
+        <div class="skill-card hover-lift animate-scale-in" 
+             *ngFor="let skill of skills; let i = index" 
+             [class.animate-stagger-1]="i === 0"
+             [class.animate-stagger-2]="i === 1"
+             [class.animate-stagger-3]="i === 2"
+             [class.animate-stagger-4]="i === 3"
+             [class.animate-stagger-5]="i === 4"
+             [class.animate-stagger-6]="i === 5"
+             [class.animate-stagger-7]="i === 6"
+             [class.animate-stagger-8]="i === 7"
+             [class.animate-stagger-9]="i === 8"
+             [class.animate-stagger-10]="i === 9"
+             [class.animate-stagger-11]="i === 10"
+             [class.animate-stagger-12]="i === 11"
+             [class.animate-stagger-13]="i === 12"
+             [class.animate-stagger-14]="i === 13"
+             [class.animate-stagger-15]="i === 14"
+             [class.animate-stagger-16]="i === 15"
+             [class.animate-stagger-17]="i === 16">
+          <div class="skill-icon animate-bounce-in">
+            <img [src]="skill.icon" [alt]="skill.name + ' logo'" class="skill-logo">
+          </div>
+          <h3 class="skill-name">{{ skill.name }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -4,6 +4,8 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { ServicesComponent } from './components/services/services.component';
+import { SkillsComponent } from './components/skills/skills.component';
+import { AiToolsComponent } from './components/ai-tools/ai-tools.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
@@ -12,7 +14,7 @@ import { PrivacyService } from './services/privacy.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, HeroComponent, ServicesComponent, ProjectsComponent, ContactComponent, ScrollRevealDirective],
+  imports: [RouterOutlet, HeaderComponent, HeroComponent, ServicesComponent, SkillsComponent, AiToolsComponent, ProjectsComponent, ContactComponent, ScrollRevealDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

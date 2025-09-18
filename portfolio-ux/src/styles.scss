@@ -547,7 +547,7 @@ img {
 /* Fix for extra scroll */
 html {
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* Changed from smooth to auto for faster scrolling */
 }
 
 body {

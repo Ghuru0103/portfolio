@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (hash) {
       setTimeout(() => {
         this.scrollToElement(hash);
-      }, 500);
+      }, 100); // Reduced from 500ms to 100ms
     }
   }
 
@@ -144,40 +144,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
     // Update the URL hash
     window.location.hash = sectionId;
     
-    // Scroll to the element
-    setTimeout(() => {
-      this.scrollToElement(sectionId);
-    }, 100);
+    // Scroll to the element immediately
+    this.scrollToElement(sectionId);
   }
 
   private scrollToElement(sectionId: string) {
-    console.log('scrollToElement called with:', sectionId);
-    
     const element = document.getElementById(sectionId);
     if (element) {
-      console.log('Element found:', element);
-      
-      // Use scrollIntoView with smooth behavior
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest'
-      });
-      
-      // Also try window.scrollTo as backup
       const headerHeight = 70;
       const elementPosition = element.offsetTop - headerHeight;
       
+      // Use instant scroll for faster navigation
       window.scrollTo({
         top: Math.max(0, elementPosition),
-        behavior: 'smooth'
+        behavior: 'auto' // Changed to auto for instant scrolling
       });
       
     } else {
       console.error('Element not found with ID:', sectionId);
-      // Try to find all elements with IDs for debugging
-      const allElements = document.querySelectorAll('[id]');
-      console.log('Available elements with IDs:', Array.from(allElements).map(el => el.id));
     }
   }
 

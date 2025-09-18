@@ -1,0 +1,43 @@
+<section class="ai-tools scroll-reveal" id="ai-tools" appScrollReveal>
+  <div class="container">
+    <div class="ai-tools-header">
+      <h2 class="section-title">AI-Powered Productivity</h2>
+      <p class="section-subtitle">The cutting-edge tools that supercharge my development workflow</p>
+    </div>
+    
+    <div class="ai-tools-container">
+      <div class="ai-tools-grid">
+        <div class="ai-tool-card hover-lift animate-scale-in" 
+             *ngFor="let tool of aiTools; let i = index" 
+             [class.animate-stagger-1]="i === 0"
+             [class.animate-stagger-2]="i === 1"
+             [class.animate-stagger-3]="i === 2"
+             [class.animate-stagger-4]="i === 3">
+          <div class="tool-header">
+            <div class="tool-icon animate-bounce-in">
+              <img *ngIf="tool.iconType === 'svg'" [src]="tool.icon" [alt]="tool.name + ' icon'" class="tool-svg-icon">
+              <span *ngIf="tool.iconType === 'emoji'">{{ tool.icon }}</span>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">{{ tool.name }}</h3>
+              <p class="tool-tagline">{{ tool.tagline }}</p>
+            </div>
+          </div>
+          
+          <div class="tool-uses">
+            <h4 class="uses-title">What I use it for:</h4>
+            <ul class="uses-list">
+              <li class="use-item" *ngFor="let use of tool.usedFor">{{ use }}</li>
+            </ul>
+          </div>
+          
+          <div class="tool-footer">
+            <div class="tool-badge">
+              <span class="badge-text">Productivity Booster</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
