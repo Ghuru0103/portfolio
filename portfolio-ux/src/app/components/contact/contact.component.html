@@ -71,6 +71,7 @@
               id="name" 
               name="name" 
               [(ngModel)]="contactForm.name" 
+              (input)="onFormInput()"
               required
               placeholder="Your name"
               class="selectable">
@@ -83,6 +84,7 @@
               id="email" 
               name="email" 
               [(ngModel)]="contactForm.email" 
+              (input)="onFormInput()"
               required
               placeholder="your.email@example.com"
               class="selectable">
@@ -94,6 +96,7 @@
               id="message" 
               name="message" 
               [(ngModel)]="contactForm.message"
+              (input)="onFormInput()"
               class="selectable" 
               required
               rows="5"

@@ -72,6 +72,13 @@ export class ContactComponent implements OnInit {
     }, 1000);
   }
 
+  onFormInput() {
+    // Clear submit message when user starts typing
+    if (this.submitMessage) {
+      this.submitMessage = '';
+    }
+  }
+
   scrollToTop() {
     if (!isPlatformBrowser(this.platformId)) {
       return;
