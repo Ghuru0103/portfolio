@@ -15,7 +15,11 @@
              [class.animate-stagger-4]="i === 3">
           <div class="tool-header">
             <div class="tool-icon animate-bounce-in">
-              <img *ngIf="tool.iconType === 'svg'" [src]="tool.icon" [alt]="tool.name + ' icon'" class="tool-svg-icon">
+              <img *ngIf="tool.iconType === 'svg'" 
+                   [src]="tool.icon" 
+                   [alt]="tool.name + ' icon'" 
+                   class="tool-svg-icon"
+                   (error)="onImageError($event, tool)">
               <span *ngIf="tool.iconType === 'emoji'">{{ tool.icon }}</span>
             </div>
             <div class="tool-info">

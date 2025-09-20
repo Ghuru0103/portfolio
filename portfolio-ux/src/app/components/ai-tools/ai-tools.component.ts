@@ -21,7 +21,7 @@ export class AiToolsComponent implements OnInit {
   aiTools: AITool[] = [
     {
       name: "ChatGPT 5",
-      icon: "assets/AI Tools/chatgpt.svg",
+      icon: "./assets/AI Tools/chatgpt.svg",
       iconType: "svg",
       tagline: "My on-demand coding partner & problem solver",
       usedFor: [
@@ -33,7 +33,7 @@ export class AiToolsComponent implements OnInit {
     },
     {
       name: "Cursor",
-      icon: "assets/AI Tools/cursor.svg",
+      icon: "./assets/AI Tools/cursor.svg",
       iconType: "svg",
       tagline: "The ultimate AI-powered IDE booster",
       usedFor: [
@@ -45,7 +45,7 @@ export class AiToolsComponent implements OnInit {
     },
     {
       name: "Gemini Pro",
-      icon: "assets/AI Tools/gemini.svg",
+      icon: "./assets/AI Tools/gemini.svg",
       iconType: "svg",
       tagline: "My creative & analytical powerhouse",
       usedFor: [
@@ -57,7 +57,7 @@ export class AiToolsComponent implements OnInit {
     },
     {
       name: "Perplexity Pro",
-      icon: "assets/AI Tools/perplexity.svg",
+      icon: "./assets/AI Tools/perplexity.svg",
       iconType: "svg",
       tagline: "The research genius in my toolkit",
       usedFor: [
@@ -72,6 +72,13 @@ export class AiToolsComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+  }
+
+  onImageError(event: any, tool: AITool) {
+    console.error(`Failed to load image for ${tool.name}:`, tool.icon);
+    // Fallback to emoji if SVG fails to load
+    tool.iconType = 'emoji';
+    tool.icon = '🤖'; // Default AI emoji
   }
 
 }
