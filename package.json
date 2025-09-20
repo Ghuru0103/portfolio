@@ -1,7 +1,0 @@
-{
-  "scripts": {
-    "start": "cd portfolio-ux && npm start",
-    "start:api": "cd portfolio-api && npm start",
-    "start:both": "concurrently \"npm run start:api\" \"npm start\""
-  }
-}
