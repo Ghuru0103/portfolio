@@ -28,64 +28,69 @@ export class PrivacyProtectionDirective implements OnInit, OnDestroy {
   }
 
   private setupProtection(): void {
-    const element = this.el.nativeElement;
+    // Commented out for development - protection overlay is disabled
+    // const element = this.el.nativeElement;
     
-    // Make element relative positioned
-    element.style.position = 'relative';
+    // // Make element relative positioned
+    // element.style.position = 'relative';
     
-    // Create protection overlay
-    this.overlay = document.createElement('div');
-    this.overlay.style.position = 'absolute';
-    this.overlay.style.top = '0';
-    this.overlay.style.left = '0';
-    this.overlay.style.width = '100%';
-    this.overlay.style.height = '100%';
-    this.overlay.style.background = 'transparent';
-    this.overlay.style.pointerEvents = 'auto';
-    this.overlay.style.zIndex = '999';
-    this.overlay.style.cursor = 'default';
+    // // Create protection overlay
+    // this.overlay = document.createElement('div');
+    // this.overlay.style.position = 'absolute';
+    // this.overlay.style.top = '0';
+    // this.overlay.style.left = '0';
+    // this.overlay.style.width = '100%';
+    // this.overlay.style.height = '100%';
+    // this.overlay.style.background = 'transparent';
+    // this.overlay.style.pointerEvents = 'auto';
+    // this.overlay.style.zIndex = '999';
+    // this.overlay.style.cursor = 'default';
     
-    element.appendChild(this.overlay);
+    // element.appendChild(this.overlay);
     
-    // Add hover effect to show protection
-    this.overlay.addEventListener('mouseenter', () => {
-      this.overlay!.style.background = 'rgba(255, 193, 7, 0.1)';
-    });
+    // // Add hover effect to show protection
+    // this.overlay.addEventListener('mouseenter', () => {
+    //   this.overlay!.style.background = 'rgba(255, 193, 7, 0.1)';
+    // });
     
-    this.overlay.addEventListener('mouseleave', () => {
-      this.overlay!.style.background = 'transparent';
-    });
+    // this.overlay.addEventListener('mouseleave', () => {
+    //   this.overlay!.style.background = 'transparent';
+    // });
   }
 
   @HostListener('contextmenu', ['$event'])
   onContextMenu(event: MouseEvent): void {
-    event.preventDefault();
-    event.stopPropagation();
-    this.showProtectionMessage('Right-click is disabled for privacy protection');
-    return false;
+    // Commented out for development - right-click is now enabled
+    // event.preventDefault();
+    // event.stopPropagation();
+    // this.showProtectionMessage('Right-click is disabled for privacy protection');
+    // return false;
   }
 
   @HostListener('dragstart', ['$event'])
   onDragStart(event: DragEvent): void {
-    event.preventDefault();
-    event.stopPropagation();
-    this.showProtectionMessage('Drag and drop is disabled for privacy protection');
-    return false;
+    // Commented out for development - drag and drop is now enabled
+    // event.preventDefault();
+    // event.stopPropagation();
+    // this.showProtectionMessage('Drag and drop is disabled for privacy protection');
+    // return false;
   }
 
   @HostListener('selectstart', ['$event'])
   onSelectStart(event: Event): void {
-    event.preventDefault();
-    event.stopPropagation();
-    return false;
+    // Commented out for development - text selection is now enabled
+    // event.preventDefault();
+    // event.stopPropagation();
+    // return false;
   }
 
   @HostListener('copy', ['$event'])
   onCopy(event: ClipboardEvent): void {
-    event.preventDefault();
-    event.stopPropagation();
-    this.showProtectionMessage('Copying is disabled for privacy protection');
-    return false;
+    // Commented out for development - copying is now enabled
+    // event.preventDefault();
+    // event.stopPropagation();
+    // this.showProtectionMessage('Copying is disabled for privacy protection');
+    // return false;
   }
 
   private showProtectionMessage(message: string): void {

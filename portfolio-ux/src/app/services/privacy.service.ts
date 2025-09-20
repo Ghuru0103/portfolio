@@ -7,9 +7,10 @@ import { isPlatformBrowser } from '@angular/common';
 export class PrivacyService {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    if (isPlatformBrowser(this.platformId)) {
-      this.initializePrivacyProtection();
-    }
+    // Commented out for development - privacy protection disabled
+    // if (isPlatformBrowser(this.platformId)) {
+    //   this.initializePrivacyProtection();
+    // }
   }
 
   private initializePrivacyProtection(): void {

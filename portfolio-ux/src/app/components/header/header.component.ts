@@ -9,7 +9,6 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  isMenuOpen = false;
   activeSection = '';
 
   private scrollListener?: () => void;
@@ -99,30 +98,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.activeSection = currentSection;
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event) {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
-    
-    // Close mobile menu on resize to desktop
-    if (window.innerWidth > 768) {
-      this.isMenuOpen = false;
-    }
-  }
-
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-    
-    // Prevent body scroll when menu is open
-    if (isPlatformBrowser(this.platformId)) {
-      if (this.isMenuOpen) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-    }
-  }
 
   scrollToSection(sectionId: string) {
     console.log('scrollToSection called with:', sectionId);
@@ -131,10 +106,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       console.log('Not in browser platform, returning');
       return;
     }
-
-    // Close mobile menu first
-    this.isMenuOpen = false;
-    document.body.style.overflow = '';
 
     // Use hash-based navigation
     this.navigateToSection(sectionId);

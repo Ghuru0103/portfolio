@@ -4,7 +4,7 @@
       <span class="logo-text hover-scale" (click)="scrollToTop()">G</span>
     </div>
     
-    <nav class="nav" [class.nav-open]="isMenuOpen">
+    <nav class="nav">
       <ul class="nav-list">
         <li class="nav-item animate-fade-in-up animate-stagger-1">
           <a (click)="scrollToSection('services')" 
@@ -53,11 +53,5 @@
         </li>
       </ul>
     </nav>
-    
-    <button class="menu-toggle hover-scale" (click)="toggleMenu()" [class.menu-open]="isMenuOpen">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
   </div>
 </header>

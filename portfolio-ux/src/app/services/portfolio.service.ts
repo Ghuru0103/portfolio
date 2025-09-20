@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { StaticDataService } from './static-data.service';
 
 export interface Profile {
   name: string;
@@ -12,7 +12,7 @@ export interface Profile {
   social: {
     github: string;
     linkedin: string;
-    twitter: string;
+    instagram: string; // Updated from twitter to instagram
   };
 }
 
@@ -50,24 +50,23 @@ export interface ContactResponse {
   providedIn: 'root'
 })
 export class PortfolioService {
-  private apiUrl = '/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(private staticDataService: StaticDataService) { }
 
   getProfile(): Observable<Profile> {
-    return this.http.get<Profile>(`${this.apiUrl}/profile`);
+    return this.staticDataService.getProfile();
   }
 
   getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(`${this.apiUrl}/projects`);
+    return this.staticDataService.getProjects();
   }
 
   getExperience(): Observable<Experience[]> {
-    return this.http.get<Experience[]>(`${this.apiUrl}/experience`);
+    return this.staticDataService.getExperience();
   }
 
   sendContactForm(contactData: ContactForm): Observable<ContactResponse> {
-    return this.http.post<ContactResponse>(`${this.apiUrl}/contact`, contactData);
+    return this.staticDataService.sendContactForm(contactData);
   }
 }
 

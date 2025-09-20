@@ -9,7 +9,7 @@ import { AiToolsComponent } from './components/ai-tools/ai-tools.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
-import { PrivacyService } from './services/privacy.service';
+// import { PrivacyService } from './services/privacy.service'; // Disabled for development
 
 @Component({
   selector: 'app-root',
@@ -22,14 +22,15 @@ export class AppComponent implements OnInit {
   title = 'portfolio-ux';
 
   constructor(
-    private privacyService: PrivacyService,
+    // private privacyService: PrivacyService, // Disabled for development
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.setupPrivacyProtection();
-    }
+    // Commented out for development - privacy protection disabled
+    // if (isPlatformBrowser(this.platformId)) {
+    //   this.setupPrivacyProtection();
+    // }
   }
 
   private setupPrivacyProtection(): void {

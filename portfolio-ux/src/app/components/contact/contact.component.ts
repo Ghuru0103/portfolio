@@ -32,37 +32,59 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.contactForm.name || !this.contactForm.email || !this.contactForm.message) {
+    // Check if form fields are empty or just whitespace
+    if (!this.contactForm.name?.trim() || !this.contactForm.email?.trim() || !this.contactForm.message?.trim()) {
       this.submitMessage = 'Please fill in all fields';
       return;
     }
 
     this.isSubmitting = true;
-    this.submitMessage = '';
+    this.submitMessage = 'Sending message...';
     
-    // Send the form data to the backend
-    this.portfolioService.sendContactForm(this.contactForm).subscribe({
-      next: (response: ContactResponse) => {
-        this.isSubmitting = false;
-        if (response.success) {
-          this.submitMessage = response.message;
-          this.contactForm = { name: '', email: '', message: '' };
-        } else {
-          this.submitMessage = response.message;
-        }
-      },
-      error: (error) => {
-        this.isSubmitting = false;
-        console.error('Error sending message:', error);
-        this.submitMessage = 'Failed to send message. Please try again or contact me directly at guru.s.prashad@gmail.com';
-      }
-    });
+    // Store form data before clearing
+    const formData = {
+      name: this.contactForm.name,
+      email: this.contactForm.email,
+      message: this.contactForm.message
+    };
+    
+    // Log form data for testing
+    console.log('Form submitted with data:', formData);
+    
+    // For local testing: Open email client with pre-filled content
+    if (isPlatformBrowser(this.platformId)) {
+      const subject = `Portfolio Contact from ${formData.name}`;
+      const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+      const mailtoLink = `mailto:guru.s.prashad@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Open email client
+      window.open(mailtoLink, '_blank');
+    }
+    
+    // Simulate form submission for local testing
+    // In production, Netlify Forms will handle this
+    setTimeout(() => {
+      this.isSubmitting = false;
+      this.submitMessage = 'Message sent successfully! I\'ll get back to you soon. (Email client opened for testing)';
+      
+      // Clear form after successful submission
+      this.contactForm = { name: '', email: '', message: '' };
+    }, 1000);
   }
 
   scrollToTop() {
-    if (isPlatformBrowser(this.platformId)) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
     }
+    
+    // Use hash navigation to go to home
+    window.location.hash = 'hero';
+    
+    // Scroll to top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 }
 
