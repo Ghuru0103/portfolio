@@ -37,6 +37,12 @@ export class ProjectsComponent implements OnInit {
       )
     );
   }
+
+  navigateToProject(project: Project) {
+    if (project.liveUrl) {
+      window.open(project.liveUrl, '_blank');
+    }
+  }
 }
 
 

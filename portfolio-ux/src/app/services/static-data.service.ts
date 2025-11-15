@@ -28,20 +28,32 @@ export class StaticDataService {
   private projectsData: Project[] = [
     {
       id: 1,
-      title: 'Portfolio Website',
-      description: 'A modern portfolio website built with Angular and Express',
-      technologies: ['Angular', 'Express', 'TypeScript'],
+      title: 'JewelGrow',
+      description: 'Empowering Jewellers, Retail Jewellery Software',
+      technologies: ['Angular', 'Node.js', 'TypeScript'],
       image: 'https://via.placeholder.com/400x300',
-      liveUrl: 'https://yourportfolio.com',
+      src: 'assets/projects/jgrow.png', // Add your project detail image path here
+      liveUrl: 'https://app.jewelgrow.com',
       githubUrl: 'https://github.com/yourusername/portfolio'
     },
     {
       id: 2,
-      title: 'E-commerce Platform',
-      description: 'Full-stack e-commerce solution with payment integration',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      title: 'Dino',
+      description: 'Wholesale Jewellery Management System',
+      technologies: ['Angular', 'Node.js', 'TypeScript'],
       image: 'https://via.placeholder.com/400x300',
-      liveUrl: 'https://yourecommerce.com',
+      src: 'assets/projects/jpro.png', // Add your project detail image path here
+      liveUrl: 'https://dino.ayou79.in',
+      githubUrl: 'https://github.com/yourusername/ecommerce'
+    },
+    {
+      id: 3,
+      title: 'Civixo',
+      description: 'Empowering Builders, Construction Management Software',
+      technologies: ['Angular', 'Node.js', 'TypeScript'],
+      image: 'https://via.placeholder.com/400x300',
+      src: 'assets/projects/civixo.png', // Add your project detail image path here
+      liveUrl: 'https://app.civixo.com/auth/login',
       githubUrl: 'https://github.com/yourusername/ecommerce'
     }
   ];
